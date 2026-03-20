@@ -51,11 +51,12 @@ export function Sidebar() {
   }, [menuItems]);
 
   return (
+    <>
     <motion.aside
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-[380px] bg-primary text-white flex flex-col h-screen sticky top-0"
+      className="hidden lg:flex w-[300px] xl:w-[380px] bg-primary text-white flex-col h-screen sticky top-0 flex-shrink-0"
     >
       {/* Profile Section */}
       <div className="p-8 text-center">
@@ -185,7 +186,29 @@ export function Sidebar() {
           <span>Hire Me</span>
         </motion.a>
       </nav>
-
     </motion.aside>
+
+    {/* Mobile Bottom Navigation */}
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] bg-[#0a0f1a]/95 backdrop-blur-xl border-t border-white/10 flex justify-around items-center px-2 py-3 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+      {menuItems.map((item) => {
+        const isActive = activeSection === item.id;
+        return (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            onClick={() => setActiveSection(item.id)}
+            className={`flex flex-col items-center gap-1 min-w-[60px] transition-all duration-300 ${
+              isActive ? 'text-[#5D9F96]' : 'text-[#7090a0] hover:text-white/80'
+            }`}
+          >
+            <div className={`p-1.5 rounded-full transition-colors ${isActive ? 'bg-[#5D9F96]/10' : 'bg-transparent'}`}>
+              <item.icon className={`w-5 h-5 ${isActive ? 'scale-110' : 'scale-100'} transition-transform`} />
+            </div>
+            <span className={`text-[10px] font-semibold ${isActive ? 'opacity-100' : 'opacity-70'}`}>{item.label.split(' ')[0]}</span>
+          </a>
+        );
+      })}
+    </div>
+    </>
   );
 }

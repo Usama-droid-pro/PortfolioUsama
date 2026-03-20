@@ -95,7 +95,7 @@ export function ProjectsSection() {
     const [expanded, setExpanded] = useState<number | null>(null)
 
     return (
-        <section id="projects" className="py-24 px-10 relative z-10">
+        <section id="projects" className="py-16 lg:py-24 px-6 lg:px-10 relative z-10">
             <div className="max-w-7xl mx-auto">
 
                 {/* Header */}
@@ -138,7 +138,7 @@ export function ProjectsSection() {
                                 }}
                             >
                                 {/* Collapsed Row — always visible */}
-                                <div className="flex items-center gap-6 px-6 py-5 select-none">
+                                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 px-5 sm:px-6 py-5 select-none">
                                     {/* Step number */}
                                     <span
                                         className="text-xs font-black tabular-nums w-7 flex-shrink-0"
@@ -227,9 +227,9 @@ export function ProjectsSection() {
                                                 className="border-t mx-6"
                                                 style={{ borderColor: `${project.accentColor}18` }}
                                             />
-                                            <div className="flex gap-8 p-6">
+                                            <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 p-4 xl:p-6">
                                                 {/* Left — Image */}
-                                                <div className="flex-shrink-0 w-64 h-44 rounded-xl overflow-hidden relative">
+                                                <div className="flex-shrink-0 w-full xl:w-64 h-48 xl:h-44 rounded-xl overflow-hidden relative">
                                                     <img
                                                         src={project.image}
                                                         alt={project.title}

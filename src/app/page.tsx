@@ -50,11 +50,11 @@ export default function Page() {
           {/* Hero Section */}
           <section
             id="about"
-            className="relative overflow-hidden px-10 py-2 z-10"
+            className="relative overflow-hidden px-6 lg:px-10 py-12 lg:py-2 z-10 text-center lg:text-left"
             style={{ minHeight: '30vh' }}
           >
 
-            <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between gap-8 h-full">
+            <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 h-full">
               {/* LEFT — Text Content */}
               <motion.div
                 className="flex-1 max-w-xl"
@@ -163,13 +163,13 @@ export default function Page() {
                 </motion.div>
 
                 {/* CTAs */}
-                <motion.div
-                  className="flex flex-wrap gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <motion.a
+              <motion.div
+                className="flex flex-wrap justify-center lg:justify-start gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <motion.a
                     href="#projects"
                     whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(93,159,150,0.4)' }}
                     whileTap={{ scale: 0.96 }}
@@ -206,8 +206,7 @@ export default function Page() {
 
               {/* RIGHT — 3D Skill Orbit */}
               <motion.div
-                className="flex-shrink-0"
-                style={{ width: 620, height: 590 }}
+                className="flex-shrink-0 w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[620px] lg:h-[590px]"
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}

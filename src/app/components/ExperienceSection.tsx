@@ -81,7 +81,7 @@ const education = {
 
 export function ExperienceSection() {
     return (
-        <section id="experience" className="py-24 px-10 relative z-10">
+        <section id="experience" className="py-16 lg:py-24 px-6 lg:px-10 relative z-10">
             <div className="max-w-7xl mx-auto">
 
                 {/* Section Header */}
@@ -104,7 +104,7 @@ export function ExperienceSection() {
                     </p>
                 </motion.div>
 
-                <div className="flex gap-16">
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
                     {/* Timeline */}
                     <div className="flex-1 relative">
                         {/* Vertical line */}

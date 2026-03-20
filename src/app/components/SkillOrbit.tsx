@@ -110,7 +110,7 @@ function loadBrandTexture(skill: Skill): Promise<THREE.CanvasTexture> {
 export function SkillOrbit() {
     const mountRef = useRef<HTMLDivElement>(null)
     const frameRef = useRef<number>(0)
-    const clockRef = useRef(new THREE.Clock())
+    const startTimeRef = useRef(0)
     const mouseRef = useRef({ x: 0, y: 0 })
     const [tooltip, setTooltip] = useState<{ name: string; x: number; y: number; color: string } | null>(null)
 
@@ -213,10 +213,11 @@ export function SkillOrbit() {
         const startAnimate = () => {
             if (animStarted) return
             animStarted = true
+            startTimeRef.current = performance.now()
 
             const animate = () => {
                 frameRef.current = requestAnimationFrame(animate)
-                const t = clockRef.current.getElapsedTime()
+                const t = (performance.now() - startTimeRef.current) / 1000
 
                 camera.position.y = 70 + Math.sin(t * 0.38) * 10
                 cSphere.rotation.y = t * 0.22

@@ -103,7 +103,7 @@ const treeStructure = `.
 
 export function FolderStructureSection() {
   return (
-    <section className="px-10 py-12 relative z-10 w-full" style={{ background: '#0a0f1a' }}>
+    <section className="px-6 lg:px-10 py-12 relative z-10 w-full" style={{ background: '#0a0f1a' }}>
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-center">
         
         {/* Left: Description */}

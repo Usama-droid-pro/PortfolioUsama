@@ -20,7 +20,7 @@ const images = [
 
 export function ClicksSection() {
   return (
-    <section id="clicks" className="py-24 px-10 relative z-10 w-full" style={{ background: '#0a0f1a' }}>
+    <section id="clicks" className="py-16 lg:py-24 px-6 lg:px-10 relative z-10 w-full" style={{ background: '#0a0f1a' }}>
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

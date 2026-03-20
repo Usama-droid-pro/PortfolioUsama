@@ -24,7 +24,7 @@ export function ContactSection() {
   const [state, formAction] = useFormState(sendEmailAction, null)
 
   return (
-    <section id="contact" className="py-24 px-10 relative z-10 w-full" style={{ background: '#0a0f1a' }}>
+    <section id="contact" className="py-16 lg:py-24 px-6 lg:px-10 relative z-10 w-full" style={{ background: '#0a0f1a' }}>
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

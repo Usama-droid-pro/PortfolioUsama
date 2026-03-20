@@ -40,7 +40,7 @@ export function SkillsSection() {
     const [activeTab, setActiveTab] = useState(skillCategories[0].id)
 
     return (
-        <section id="skills" className="py-5 px-10 relative overflow-hidden z-10 w-full" style={{ background: '#0a0f1a' }}>
+        <section id="skills" className="py-5 lg:py-10 px-6 lg:px-10 relative overflow-hidden z-10 w-full" style={{ background: '#0a0f1a' }}>
             <div className="max-w-7xl mx-auto">
                 <div className="mb-12 text-center md:text-left">
                     <motion.div
