@@ -9,6 +9,7 @@ import { ApexNodeBanner } from './components/ApexNodeBanner'
 import { FolderStructureSection } from './components/FolderStructureSection'
 import { ClicksSection } from './components/ClicksSection'
 import { ContactSection } from './components/ContactSection'
+import { SuperpowerPalette } from './components/SuperpowerPalette'
 import { motion } from 'motion/react'
 import {
   Download,
@@ -163,13 +164,13 @@ export default function Page() {
                 </motion.div>
 
                 {/* CTAs */}
-              <motion.div
-                className="flex flex-wrap justify-center lg:justify-start gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <motion.a
+                <motion.div
+                  className="flex flex-wrap justify-center lg:justify-start gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <motion.a
                     href="#projects"
                     whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(93,159,150,0.4)' }}
                     whileTap={{ scale: 0.96 }}
@@ -224,26 +225,14 @@ export default function Page() {
             </div>
           </section>
 
-          {/* Featured OSS Banner */}
           <ApexNodeBanner />
-
-          {/* Folder Structure Highlight (Apex Node Architecture) */}
           <FolderStructureSection />
           <SkillsSection />
-
-
-          {/* Experience Section */}
           <ExperienceSection />
-
-          {/* Projects Section */}
           <ProjectsSection />
-
-          {/* Clicks Collage Section */}
           <ClicksSection />
-
-          {/* Skills Section (Bottom) */}
-          {/* Contact Us Section */}
           <ContactSection />
+          <SuperpowerPalette />
         </main>
       </div>
     </div>
