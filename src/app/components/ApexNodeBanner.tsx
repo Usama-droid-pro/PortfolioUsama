@@ -27,18 +27,18 @@ export function ApexNodeBanner() {
           }}
         >
           {/* Decorative glows */}
-          <div 
+          <div
             className="absolute -top-32 -left-32 w-64 h-64 rounded-full blur-[100px] pointer-events-none opacity-40"
             style={{ background: '#5D9F96' }}
           />
-          <div 
+          <div
             className="absolute -bottom-32 -right-32 w-64 h-64 rounded-full blur-[100px] pointer-events-none opacity-30"
             style={{ background: '#FA7305' }}
           />
 
           <div className="relative z-10 flex-1">
             <div className="flex items-center gap-3 mb-3">
-              <span 
+              <span
                 className="flex items-center gap-1.5 px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full"
                 style={{ background: 'rgba(93,159,150,0.15)', color: '#5D9F96', border: '1px solid rgba(93,159,150,0.3)' }}
               >
@@ -46,14 +46,14 @@ export function ApexNodeBanner() {
                 Featured Open Source
               </span>
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: '#f0f6ff', lineHeight: 1.2 }}>
-              Check out my Advanced <br className="hidden md:block"/>
+              Check out my Advanced <br className="hidden md:block" />
               <span style={{ color: '#ABE2F4' }}>Node.js Starter Kit</span> for Developers
             </h2>
-            
+
             <p className="text-sm md:text-base mb-6 max-w-xl" style={{ color: '#7A9BAB' }}>
-              Apex Node — A production-ready TypeScript boilerplate designed to scale. 
+              Apex Node — A production-ready TypeScript boilerplate designed to scale.
               Skip the setup and jump straight to writing business logic.
             </p>
 
