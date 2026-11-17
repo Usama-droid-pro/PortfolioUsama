@@ -1,0 +1,165 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  background: var(--cobalt);
+  color: var(--paper);
+  overflow-x: clip; /* the curved band and spotlight run past the screen edge */
+}
+
+/* ---------- Duo stage (clips the spotlight to the hero) ---------- */
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ---------- Copy ---------- */
+.content {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: end;
+  padding: 8em 2.5em 11.5em;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 6em;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.headingLine {
+  display: block;
+}
+
+/* SplitText line wrapper; keeps descender room inside the mask. */
+.line {
+  padding-bottom: 0.04em;
+}
+
+.intro {
+  position: absolute;
+  left: 2.5em;
+  top: 8.5em;
+  max-width: 32em;
+  font-size: 1.125em;
+  line-height: 1.5;
+  color: var(--paper);
+}
+
+/* ---------- Pills ---------- */
+.pills {
+  list-style: none;
+  padding: 0;
+}
+
+.pill {
+  position: absolute;
+  padding: 0.75em 1.25em;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95em;
+  line-height: 1.1;
+  white-space: nowrap;
+  transform: rotate(var(--r, 0deg));
+  will-change: transform;
+}
+
+.pillMask {
+  display: block;
+  overflow: hidden;
+}
+
+.pillText {
+  display: block;
+}
+
+.butter {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+.lilac {
+  background: var(--lilac);
+  color: var(--ink);
+}
+
+.paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.outline {
+  border: 0.1em solid var(--paper);
+  color: var(--paper);
+}
+
+.pos0 {
+  left: 33em;
+  bottom: 28.25em;
+}
+
+/* Next to the robot's head. */
+.pos1 {
+  right: 2em;
+  bottom: 33em;
+}
+
+.pos2 {
+  right: 17em;
+  top: 8em;
+}
+
+.pos3 {
+  left: 34em;
+  top: 13.5em;
+}
+
+/* ---------- Tablet & mobile: everything flows ---------- */
+@media (max-width: 991px) {
+  .content {
+    padding: 8em 2em 11em;
+  }
+
+  /* "Full-stack" must stay on one line: size follows the viewport. */
+  .heading {
+    font-size: 7vw;
+  }
+
+  .headingLine {
+    white-space: nowrap;
+  }
+
+  .intro {
+    position: static;
+    margin-top: 1.5em;
+    max-width: 30em;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6em;
+    margin-top: 1.75em;
+  }
+
+  .pill {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding: 7em 1.5em 8.5em;
+  }
+
+  .intro {
+    font-size: 1.05em;
+  }
+}

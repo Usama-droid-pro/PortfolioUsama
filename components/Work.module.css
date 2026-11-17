@@ -1,0 +1,344 @@
+.work {
+  position: relative;
+  padding: 7em 2.5em 8em;
+  background: var(--paper);
+  color: var(--ink);
+  /* Cards start scaled up and tilted; clip so they never widen the page on phones. */
+  overflow-x: clip;
+}
+
+/* ---------- Header ---------- */
+.head {
+  margin-bottom: 2.5em;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--cobalt);
+}
+
+.heading {
+  margin-top: 0.3em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 6em;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+/* ---------- Grid ---------- */
+.grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25em;
+}
+
+/* Clip window for the reveal; perspective for the tilt inside. */
+.mask {
+  perspective: 1200px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 100%;
+  will-change: transform;
+}
+
+/* ---------- Media panel ---------- */
+.media {
+  position: relative;
+  height: 32em;
+  border-radius: 1.5em;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.media:focus-visible {
+  outline-offset: 0.3em;
+}
+
+.art {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 62%;
+  translate: -50% -50%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: scale 0.8s var(--ease-out), rotate 0.8s var(--ease-out);
+}
+
+/* Real screenshot: fills the panel, a dark fade keeps the text readable. */
+.shot {
+  object-fit: cover;
+  object-position: top;
+  transition: scale 0.8s var(--ease-out);
+}
+
+.media:has(.shot)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgb(14 18 64 / 0.96) 12%, rgb(14 18 64 / 0.8) 38%, rgb(14 18 64 / 0) 72%);
+  pointer-events: none;
+}
+
+.media:has(.shot) .metric,
+.media:has(.shot) .hint {
+  z-index: 1;
+  color: var(--paper);
+}
+
+@media (hover: hover) {
+  .media:hover .shot {
+    scale: 1.04;
+  }
+}
+
+.metric {
+  position: absolute;
+  left: 1.25em;
+  right: 1.25em;
+  bottom: 4.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.metricValue {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 3.4em;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
+.metricLabel {
+  font-weight: 500;
+  font-size: 1.05em;
+}
+
+.hint {
+  position: absolute;
+  left: 1.25em;
+  bottom: 1.25em;
+  padding: 0.5em 0.9em;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 0.1em currentColor;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.8em;
+}
+
+.hint::after {
+  content: " +";
+}
+
+/* "What I did" panel slides up over the art. */
+.points {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.9em;
+  padding: 1.5em 1.35em;
+  background: var(--ink);
+  color: var(--paper);
+  translate: 0 101%;
+  transition: translate 0.6s var(--ease-out);
+}
+
+.pointsTitle {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35em;
+  text-transform: uppercase;
+  color: var(--butter);
+}
+
+.points ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.7em;
+}
+
+.points li {
+  position: relative;
+  padding-left: 1.1em;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background: var(--butter);
+}
+
+@media (hover: hover) {
+  .media:hover .points {
+    translate: 0 0;
+  }
+
+  .media:hover .art {
+    scale: 1.12;
+    rotate: -6deg;
+  }
+}
+
+.media:focus-within .points,
+.open .points {
+  translate: 0 0;
+}
+
+/* ---------- Tones ---------- */
+.cobalt {
+  background: var(--cobalt);
+  color: var(--paper);
+}
+
+.cobalt .art {
+  color: var(--butter);
+}
+
+.butter {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+.butter .art {
+  color: var(--cobalt);
+}
+
+.lilac {
+  background: var(--lilac);
+  color: var(--ink);
+}
+
+.lilac .art {
+  color: var(--cobalt);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.ink .art {
+  color: var(--butter);
+}
+
+/* The dark card's panel needs contrast against itself. */
+.ink .points {
+  background: var(--cobalt);
+}
+
+/* ---------- Detail row ---------- */
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1em;
+  padding: 0 0.25em;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35em;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.category {
+  margin-top: 0.45em;
+  font-size: 0.95em;
+  line-height: 1.35;
+  color: rgb(14 18 64 / 0.7);
+}
+
+.arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  background: var(--cobalt);
+  color: var(--paper);
+  transition: background-color 0.3s, rotate 0.5s var(--ease-spring);
+}
+
+.arrow svg {
+  width: 1.1em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow:hover {
+  background: var(--ink);
+  rotate: 45deg;
+}
+
+/* ---------- Tablet & mobile ---------- */
+@media (max-width: 991px) {
+  .work {
+    padding: 6em 2em 6em;
+  }
+
+  .heading {
+    font-size: 4.6em;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.5em;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .work {
+    padding: 5em 1.25em 5em;
+  }
+
+  .heading {
+    font-size: 3.2em;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .media {
+    height: 28em;
+  }
+
+  .art {
+    width: 42%;
+    top: 34%;
+  }
+
+}

@@ -1,0 +1,68 @@
+/* The duo stands on an invisible floor just above the marquee band.
+   Box keeps the clip's 640:676 ratio; everything else hangs off it. */
+.duo {
+  position: absolute;
+  right: 3em;
+  bottom: 8.5em;
+  height: min(33em, 59.4svh);
+  aspect-ratio: 640 / 676;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+}
+
+/* Cone of light from the top of the hero down onto the pair. */
+.spotlight {
+  position: absolute;
+  left: 50%;
+  bottom: -1.5em;
+  width: max(190%, 90svh); /* wide enough that the cone never hits the box sides */
+  height: 100svh;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(ellipse 34% 3.2% at 50% 98%, rgb(201 204 255 / 0.605), transparent 75%),
+    conic-gradient(
+      at 50% -6%,
+      transparent 162deg,
+      rgb(201 204 255 / 0.22) 170deg,
+      rgb(201 204 255 / 0.22) 190deg,
+      transparent 198deg
+    );
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%, #000 92%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 45%, #000 92%, transparent);
+  pointer-events: none;
+}
+
+/* Contact shadow under the feet. */
+.shadow {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -0.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(14 18 64 / 0.45), transparent);
+  filter: blur(0.25em);
+}
+
+@media (max-width: 991px) {
+  .duo {
+    top: 6.5em;
+    bottom: auto;
+    right: 2em;
+    height: 28.6em;
+  }
+}
+
+@media (max-width: 767px) {
+  .duo {
+    top: 4.75em;
+    right: 1em;
+    height: 16em;
+  }
+}

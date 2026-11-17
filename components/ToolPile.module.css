@@ -1,0 +1,275 @@
+.tools {
+  position: relative;
+  padding: 6em 2.5em 7em;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* ---------- Header ---------- */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2em;
+  margin-bottom: 1.75em;
+}
+
+/* ---------- Filters ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-bottom: 1.25em;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.7em 1.15em;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: inset 0 0 0 0.1em var(--ink);
+  color: var(--ink);
+  font: 500 0.95em/1 var(--font-display);
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+
+.count {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85em;
+  opacity: 0.55;
+}
+
+.filter:hover {
+  background: var(--lilac);
+  box-shadow: inset 0 0 0 0.1em var(--lilac);
+}
+
+.filter[aria-pressed="true"] {
+  background: var(--cobalt);
+  box-shadow: inset 0 0 0 0.1em var(--cobalt);
+  color: var(--paper);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 4.5em;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.hint {
+  max-width: 22em;
+  font-size: 1.125em;
+  line-height: 1.45;
+  text-align: right;
+}
+
+/* ---------- Box ---------- */
+.box {
+  position: relative;
+  height: min(31em, 62svh);
+  border-radius: 2.5em;
+  background: var(--cobalt);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Static layout (no JS / reduced motion): a wrapped cluster at the bottom. */
+.pile {
+  list-style: none;
+  padding: 2em 2em 4.5em;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+/* Static layout shows only the current filter. */
+.box:not(.live) .pill[data-off] {
+  display: none;
+}
+
+/* Physics layout: Matter positions every pill from the top-left corner. */
+.live .pile {
+  display: block;
+  padding: 0;
+}
+
+.live .pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden; /* shown as each one drops in */
+  cursor: grab;
+  touch-action: none; /* drag the pill, not the page */
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+}
+
+.live .grabbed {
+  cursor: grabbing;
+  z-index: 2;
+}
+
+/* ---------- Pill ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.8em 1.3em;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: calc(1.05em * var(--scale, 1)); /* --scale: bigger pills when fewer are shown */
+  line-height: 1;
+  white-space: nowrap;
+  scale: var(--s, 1); /* animated to 0 when a filter clears the pile */
+}
+
+.big {
+  font-size: calc(1.6em * var(--scale, 1));
+  font-weight: 800;
+  padding: 0.75em 1.25em;
+}
+
+.icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: currentColor;
+}
+
+.butter {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+.paper {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.lilac {
+  background: var(--lilac);
+  color: var(--ink);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* "Anything else" pill: outlined, so it reads as a promise, not a tool. */
+.special {
+  background: var(--cobalt);
+  box-shadow: inset 0 0 0 0.12em var(--butter);
+  color: var(--butter);
+}
+
+/* ---------- Note: what the hovered tool is for ---------- */
+.note {
+  position: absolute;
+  left: 1.5em;
+  top: 1.25em;
+  z-index: 3;
+  max-width: 26em;
+  font-size: 1.05em;
+  line-height: 1.4;
+  color: var(--paper);
+  pointer-events: none;
+}
+
+/* Default note wording follows the input type. */
+.ifTouch {
+  display: none;
+}
+
+@media (hover: none) {
+  .ifHover {
+    display: none;
+  }
+
+  .ifTouch {
+    display: inline;
+  }
+}
+
+/* ---------- Tablet & mobile ---------- */
+@media (max-width: 991px) {
+  .tools {
+    padding: 5em 2em 6em;
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+  }
+
+  .heading {
+    font-size: 3.6em;
+  }
+
+  .hint {
+    text-align: left;
+  }
+
+  .box {
+    height: min(34em, 55svh);
+    border-radius: 2em;
+  }
+
+  .pill {
+    font-size: calc(0.95em * var(--scale, 1));
+  }
+
+  .big {
+    font-size: calc(1.3em * var(--scale, 1));
+  }
+}
+
+@media (max-width: 767px) {
+  .tools {
+    padding: 4em 1.25em 5em;
+  }
+
+  .heading {
+    font-size: 2.6em;
+  }
+
+  .box {
+    height: min(36em, 62svh);
+    border-radius: 1.5em;
+  }
+
+  .pill {
+    font-size: calc(0.8em * var(--scale, 1));
+    padding: 0.7em 1em;
+  }
+
+  .big {
+    font-size: calc(1.05em * var(--scale, 1));
+  }
+
+  .filter {
+    font-size: 0.85em;
+    padding: 0.6em 0.95em;
+  }
+
+  .note {
+    left: 1em;
+    right: 1em;
+    top: 1em;
+    font-size: 0.95em;
+  }
+}

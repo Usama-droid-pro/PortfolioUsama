@@ -1,0 +1,73 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95em 1.6em;
+  border-radius: 999px;
+  background: var(--bg, var(--butter));
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 1;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18em;
+  height: 18em;
+  margin: -9em 0 0 -9em;
+  border-radius: 50%;
+  background: var(--ink);
+  transform: scale(0);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.butter {
+  --bg: var(--butter);
+}
+
+.whatsapp {
+  --bg: #25d366;
+}
+
+.lilac {
+  --bg: var(--lilac);
+}
+
+.label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  transition: color 0.3s var(--ease-out);
+}
+
+.btn:hover .label {
+  color: var(--bg);
+}
+
+.label svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+/* Phones and tablets: icon-only circle. */
+@media (max-width: 991px) {
+  .compact {
+    padding: 0.85em;
+  }
+
+  .compact .text {
+    display: none;
+  }
+}

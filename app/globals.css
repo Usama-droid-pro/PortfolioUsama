@@ -1,0 +1,151 @@
+/* ------------------------------------------------------------------
+   Theme tokens
+   ------------------------------------------------------------------ */
+:root {
+  /* Palette */
+  --cobalt: #2f3cff;      /* stage colour: hero, bands, primary surfaces */
+  --cobalt-deep: #1d27c9; /* hover / pressed cobalt */
+  --paper: #f2f4ff;       /* cool white page background */
+  --ink: #0e1240;         /* text on light surfaces */
+  --butter: #ffd23f;      /* highlight: marquee band, CTA fill, focus */
+  --lilac: #c9ccff;       /* soft secondary: pills, quiet borders */
+
+  /* Type */
+  --font-display: var(--font-unbounded), "Arial Black", sans-serif;
+  --font-body: var(--font-hanken), Arial, sans-serif;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Fluid sizing: 1em scales with viewport width against the design frame.
+     Desktop frame 1440px at 16px base. */
+  --size-unit: 16;
+  --size-container-ideal: 1440;
+  --size-container-min: 992px;
+  --size-container-max: 1920px;
+  --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+  --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+}
+
+@media (max-width: 991px) {
+  :root {
+    --size-container-ideal: 834;
+    --size-container-min: 768px;
+    --size-container-max: 991px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --size-container-ideal: 550;
+    --size-container-min: 480px;
+    --size-container-max: 767px;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --size-container-ideal: 390;
+    --size-container-min: 320px;
+    --size-container-max: 479px;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Reset
+   ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--size-font);
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 0.15em solid var(--butter);
+  outline-offset: 0.2em;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Elements animated on load start hidden only when JS is running and
+   motion is allowed, so the page never stays blank. */
+html.js-motion [data-intro] {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

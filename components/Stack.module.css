@@ -1,0 +1,164 @@
+.stack {
+  padding: 8em 2.5em 8em;
+  background: var(--cobalt);
+  color: var(--paper);
+}
+
+/* ---------- Header ---------- */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2em;
+  margin-bottom: 4em;
+}
+
+.heading {
+  max-width: 8em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 6em;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.intro {
+  max-width: 21em;
+  font-size: 1.125em;
+  line-height: 1.45;
+  color: var(--lilac);
+}
+
+/* ---------- Rows ---------- */
+.rows {
+  list-style: none;
+  padding: 0;
+  border-bottom: 1px solid rgb(201 204 255 / 0.35);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 14em minmax(0, 1fr);
+  gap: 2em;
+  align-items: baseline;
+  padding: 1.75em 0 1.9em;
+  overflow: hidden; /* clips the rise-in */
+}
+
+/* Divider above each row; drawn left to right on reveal. */
+.rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: rgb(201 204 255 / 0.35);
+  transform-origin: left center;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--lilac);
+  transition: color 0.3s;
+}
+
+.tools {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2.1em;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.tool {
+  white-space: nowrap; /* never split a name across lines */
+  transition: color 0.3s;
+}
+
+.sep {
+  color: rgb(201 204 255 / 0.5);
+}
+
+/* "Anything else" chip, the one bit of decoration per row. */
+.extra {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-left: 0.8em;
+  padding: 0.55em 1em;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 0.12em var(--butter);
+  color: var(--butter);
+  font-size: 0.42em;
+  letter-spacing: 0;
+  vertical-align: 0.35em;
+  white-space: nowrap;
+}
+
+.extra svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+@media (hover: hover) {
+  .row:hover .tool,
+  .row:hover .label {
+    color: var(--butter);
+  }
+}
+
+/* ---------- Tablet & mobile ---------- */
+@media (max-width: 991px) {
+  .stack {
+    padding: 6em 2em;
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25em;
+    margin-bottom: 3em;
+  }
+
+  .heading {
+    font-size: 4.6em;
+  }
+
+  .row {
+    grid-template-columns: 10em minmax(0, 1fr);
+    gap: 1.5em;
+  }
+
+  .tools {
+    font-size: 1.7em;
+  }
+}
+
+@media (max-width: 767px) {
+  .stack {
+    padding: 5em 1.25em;
+  }
+
+  .heading {
+    font-size: 3.2em;
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6em;
+    padding: 1.4em 0 1.5em;
+  }
+
+  .tools {
+    font-size: 1.45em;
+  }
+
+  .extra {
+    font-size: 0.55em;
+  }
+}
